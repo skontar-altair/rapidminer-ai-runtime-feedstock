@@ -9,11 +9,11 @@ package:
 
 source:
   url: https://maven.rapidminer.com/repository/pypi-snapshot/packages/rapidminer-ai-runtime/${{ version }}/rapidminer_ai_runtime-${{ version }}.tar.gz
-  sha256: 327bf935388ccbd5576122991dd884eb816cfe735128444dd4193a5fff91d5ec
+  sha256: f778e72f7376a5e3bbe4d9cd3f85e54581906eefca0013c868c182dbdbf6551a
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -25,7 +25,7 @@ requirements:
     - python >=${{ python_min }}
     - numpy >=1.24.4
     - packaging >=24.1
-    - pandas >=2.0.3
+    - pandas >=2.0.3,<3.0
     - pydantic >=2.0.3,<3.0
     - rapidminer-ai-core >=2.0
     - websockets >=16.0
@@ -35,9 +35,9 @@ tests:
   - python:
       imports:
       - rapidminer
-#      - rapidminer.core
-#      - rapidminer.ai
-#      - rapidminer.ai.ext
+     - rapidminer.core
+     - rapidminer.ai
+     - rapidminer.ai.ext
       pip_check: true
 
 about:
